@@ -1,0 +1,9 @@
+       Comparisons shall be based on one or more sort keys extracted
+       from each line of input (or, if no sort keys are specified, the
+       entire line up to, but not including, the terminating <newline>),
+       and shall be performed using the collating sequence of the
+       current locale. If this collating sequence does not have a total
+       ordering of all characters (see the Base Definitions volume of
+       POSIX.1‐2017, Section 7.3.2, LC_COLLATE), any lines of input that
+       collate equally should be further compared byte-by-byte using the
+       collating sequence for the POSIX locale.
