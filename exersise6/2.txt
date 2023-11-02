@@ -1,5 +1,4 @@
-3 3 4
-1 2 3
-6 23 22
-13 3 1
-1 1 55
+Winter: white: snow: frost
+Spring: green: grass: warm
+Summer: colorful: blossom: hot
+Autumn: yellow: leaves: cool

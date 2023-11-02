@@ -29,7 +29,6 @@ import (
 	"log"
 	"os"
 	"strings"
-	"os/exec"
 )
 func CheckErorr(err error) bool {
 	if err != nil {
