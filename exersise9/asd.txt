@@ -1,0 +1,130 @@
+// Утилита wget
+
+// Реализовать утилиту wget с возможностью скачивать сайты целиком.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+
+	"log"
+	"net/http"
+
+	"golang.org/x/net/html"
+)
+func CheckErorr(err error) bool {
+	if err != nil {
+		log.Println(err.Error())
+		return false
+	} else {
+		return true
+	}
+}
+
+func NormilizLink(link, scheme, host string) string {
+	if !strings.HasPrefix(link, "http://") && !strings.HasPrefix(link, "https://") {
+		link = scheme + "://" + host + link
+	}
+	return link
+}
+
+func visit(links []string, n *html.Node) [] string{
+	if n.Type == html.ElementNode && n.Data == "a" {
+		for _, attr := range n.Attr {
+			if attr.Key == "href" {
+				links =append(links, attr.Val)
+			}
+		}
+	}
+	for c := n.FirstChild; c != nil; c = c.NextSibling {
+		links = visit(links, c)
+	}
+	return links 
+}
+
+func CollectAllLinks(url string, maxdepth int, visitet *map[string]bool) ([]string, error) { 
+	_, ok := (*visitet)[url] 
+	if ok {
+		return nil, fmt.Errorf("alredy visited")
+	}
+	if maxdepth == 0 {
+		return nil , fmt.Errorf("max depth reached")
+	}
+	(*visitet)[url] = true
+
+	resp, err := http.Get(url)
+	defer resp.Body.Close()
+	if !CheckErorr(err) || (resp.StatusCode  != 200) {
+		return nil, err
+	}
+	doc, err := html.Parse(resp.Body)
+	if !CheckErorr(err) {
+		return nil, err
+	}
+	links := visit(nil, doc)
+	for i := 0; i < len(links); i++ {
+		links[i] = NormilizLink(links[i], resp.Request.URL.Scheme, resp.Request.URL.Host)
+	}
+	buff_link := make([]string, 0, len(links))
+	copy(links, buff_link)
+	for i := 0; i < len(links); i++ {
+		new_lunks, err := CollectAllLinks(links[i], maxdepth - 1, visitet)
+		if CheckErorr(err) {
+			buff_link =append(buff_link, new_lunks...)
+		}
+	}
+	links = buff_link
+
+	return links, nil
+	// // _, ok := all_lincs[url] 
+	// // if ok {
+	// // 	return
+	// // }
+	// // fmt.Println(url)
+	// resp, err := http.Get(url)
+	// if !CheckErorr(err) {
+	// 	os.Exit(0)
+	// } else {
+	// 	// fmt.Println(resp)
+	// }
+	// doc, err := html.Parse(resp.Body)
+	// if !CheckErorr(err) {
+	// 	os.Exit(0)
+	// }
+	// if doc.Type == html.ElementNode && doc.Data == "a" {
+	// 	fmt.or
+	// 	for _, attr := range doc.Attr {
+	// 		if attr.Key == "href" {
+	// 			link := attr.Key
+	// 			link_parts := strings.Split(link, "/")
+	// 			fmt.Println(link_parts)
+	// 			all_lincs[attr.Val] = true
+	// 		}
+	// 	}
+	// }
+
+	
+	// data, err := io.ReadAll(r.Body)
+	// token := html.NewTokenizer()
+}
+
+func wget(url string, maxdepth int) {
+	visitet := make(map[string]bool)
+	all_links, err := CollectAllLinks(url, maxdepth, &visitet) 
+	if CheckErorr(err) {
+		// fmt.Println(all_links)
+	}
+	for key := range all_links {
+		fmt.Println(key)
+	}
+}
+
+func main() {
+
+	// url := os.Args[1]
+	url := "https://lichess.org"
+	// fmt.Println(url)
+	// CollectAllLinks(url, 3)
+	wget(url, 3)
+}

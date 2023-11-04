@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="en-GB"><!-- Lichess is open source! See https://lichess.org/source --><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta http-equiv="Content-Security-Policy" content="default-src 'self' lichess1.org; connect-src 'self' data: lichess1.org wss://socket0.lichess.org wss://socket1.lichess.org wss://socket2.lichess.org wss://socket3.lichess.org wss://socket4.lichess.org wss://socket5.lichess.org https://explorer.lichess.ovh https://tablebase.lichess.ovh; style-src 'self' 'unsafe-inline' lichess1.org; frame-src 'self' lichess1.org www.youtube.com player.twitch.tv; worker-src 'self' lichess1.org blob:; img-src data: *; script-src 'nonce-0K5rR5rlLAdjbHTjUZ7aEnbj' 'self' lichess1.org; font-src 'self' lichess1.org; base-uri 'none';"><meta name="theme-color" content="#2e2a24"><title>Source Code • lichess.org</title><link href="https://lichess1.org/assets/_NLsvmn/css/site.ltr.dark.min.css" rel="stylesheet" /><link href="https://lichess1.org/assets/_NLsvmn/css/source.ltr.dark.min.css" rel="stylesheet" /><link id="piece-sprite" href="https://lichess1.org/assets/_NLsvmn/piece-css/cburnett.css" rel="stylesheet" /><meta content="Free online chess server. Play chess in a clean interface. No registration, no ads, no plugin required. Play chess with the computer, friends or random opponents." name="description" /><link rel="mask-icon" href="https://lichess1.org/assets/_NLsvmn/logo/lichess.svg" color="black" /><link rel="icon" type="image/png" href="https://lichess1.org/assets/_NLsvmn/logo/lichess-favicon-512.png" sizes="512x512"><link rel="icon" type="image/png" href="https://lichess1.org/assets/_NLsvmn/logo/lichess-favicon-256.png" sizes="256x256"><link rel="icon" type="image/png" href="https://lichess1.org/assets/_NLsvmn/logo/lichess-favicon-192.png" sizes="192x192"><link rel="icon" type="image/png" href="https://lichess1.org/assets/_NLsvmn/logo/lichess-favicon-128.png" sizes="128x128"><link rel="icon" type="image/png" href="https://lichess1.org/assets/_NLsvmn/logo/lichess-favicon-64.png" sizes="64x64"><link id="favicon" rel="icon" type="image/png" href="https://lichess1.org/assets/_NLsvmn/logo/lichess-favicon-32.png" sizes="32x32"><meta name="google" content="notranslate"><link href="/blog.atom" title="Blog" type="application/atom+xml" rel="alternate" /><link rel="preload" href="https://lichess1.org/assets/_NLsvmn/font/lichess.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="https://lichess1.org/assets/_NLsvmn/font/noto-sans-v14-latin-regular.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="https://lichess1.org/assets/_NLsvmn/font/lichess.chess.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="https://lichess1.org/assets/_NLsvmn/images/board/svg/brown.svg" as="image" ><link rel="manifest" href="/manifest.json"><meta name="twitter:site" content="@lichess"><link rel="jslicense" href="/source"></head><body class="dark brown Woodi Basic coords-in" data-sound-set="standard" data-socket-domains="socket0.lichess.org,socket1.lichess.org,socket2.lichess.org,socket3.lichess.org,socket4.lichess.org,socket5.lichess.org" data-asset-url="https://lichess1.org" data-asset-version="NLsvmn" data-theme="dark" data-board-theme="brown" data-piece-set="cburnett"><form id="blind-mode" action="/toggle-blind-mode" method="POST"><input type="hidden" name="enable" value="1"><input type="hidden" name="redirect" value="/source"><button type="submit">Accessibility: Enable blind mode</button></form><header id="top"><div class="site-title-nav">
+<input type="checkbox" id="tn-tg" class="topnav-toggle fullscreen-toggle" autocomplete="off" aria-label="Navigation">
+<label for="tn-tg" class="fullscreen-mask"></label>
+<label for="tn-tg" class="hbg"><span class="hbg__in"></span></label><h1 class="site-title"><a href="/">lichess<span>.org</span></a></h1><nav id="topnav" class="hover"><section><a href="/"><span class="play">Play</span><span class="home">lichess.org</span></a><div role="group"><a href="/?any#hook">Create a game</a><a href="/tournament">Arena tournaments</a><a href="/swiss">Swiss tournaments</a><a href="/simul">Simultaneous exhibitions</a></div></section><section><a href="/training">Puzzles</a><div role="group"><a href="/training">Puzzles</a><a href="/training/dashboard/30">Puzzle Dashboard</a><a href="/streak">Puzzle Streak</a><a href="/storm">Puzzle Storm</a><a href="/racer">Puzzle Racer</a></div></section><section><a href="/learn">Learn</a><div role="group"><a href="/learn">Chess basics</a><a href="/practice">Practice</a><a href="/training/coordinate">Coordinates</a><a href="/study">Study</a><a href="/coach">Coaches</a></div></section><section><a href="/tv">Watch</a><div role="group"><a href="/tv">Lichess TV</a><a href="/games">Current games</a><a href="/streamer">Streamers</a><a href="/broadcast">Broadcasts</a><a href="/video">Video library</a></div></section><section><a href="/player">Community</a><div role="group"><a href="/player">Players</a><a href="/team">Teams</a><a href="/forum">Forum</a><a href="/blog/community">Blog</a></div></section><section><a href="/analysis">Tools</a><div role="group"><a href="/analysis">Analysis board</a><a href="/opening">Openings</a><a href="/editor">Board editor</a><a href="/paste">Import game</a><a href="/games/search">Advanced search</a></div></section></nav></div><div class="site-buttons"><div id="warn-no-autoplay"><a data-icon="" target="_blank" href="/faq#autoplay"></a></div><div id="clinput"><a class="link"><span data-icon=""></span></a><input spellcheck="false" autocomplete="false" aria-label="Search" placeholder="Search" enterkeyhint="search" /></div><div class="dasher"><button class="toggle link anon"><span title="Preferences" aria-label="Preferences" data-icon="""></span></button><div id="dasher_app" class="dropdown"></div>
+</div>
+<a href="/login?referrer=/source" class="signin button button-empty">Sign in</a></div></header><div id="main-wrap" class="is2d"><main class="page-menu"><aside class="subnav"><nav class="subnav__inner page-menu__menu"><a href="/about">About lichess.org</a><a href="/faq">FAQ</a><a href="/contact">Contact</a><a href="/terms-of-service">Terms of Service</a><a href="/privacy">Privacy</a><a href="/help/master">Title verification</a><div class="sep"></div><a class="active" href="/source">Source Code</a><a href="/help/contribute">Contribute</a><a href="/changelog">Changelog</a><a href="/thanks">Thank you!</a><div class="sep"></div><a href="/developers">Webmasters</a><a href="https://database.lichess.org">Database <i data-icon=""></i></a><a href="/api">API <i data-icon=""></i></a><div class="sep"></div><a href="/lag">Is Lichess lagging?</a><a href="/ads">Block ads</a></nav></aside><div class="page-menu__content page force-ltr"><section class="box box-pad body"><h1 class="box__top">Source Code</h1><p>Lichess is free/libre open source software. You can download, read, use and modify every bit of source code. </p>
+
+<h2>Main server</h2>
+
+<ul>
+
+<li><a href="https://github.com/lichess-org/lila">lichess-org/lila</a> Main backend and frontend (Scala)</li>
+
+<li><a href="https://github.com/lichess-org/lila/tree/master/modules">lichess-org/lila modules</a> Backend modules (Scala)</li>
+
+<li><a href="https://github.com/lichess-org/lila/tree/master/ui">lichess-org/lila ui</a> Frontend modules (TypeScript, Sass)</li>
+
+<li><a href="https://github.com/lichess-org/scalachess">lichess-org/scalachess</a> Rules of chess and its variants (Scala)</li>
+
+<li><a href="https://github.com/lichess-org/compression">lichess-org/compression</a> Compression algorithms for chess moves and clocks (Java)</li>
+
+<li><a href="https://github.com/lichess-org/chessground">lichess-org/chessground</a> Frontend chess board (TypeScript)</li>
+
+<li><a href="https://github.com/hi-ogawa/Stockfish">hi-ogawa/Stockfish</a> Stockfish compiled for cutting-edge browsers (C++, WebAssembly, JavaScript)</li>
+
+<li><a href="https://github.com/lichess-org/stockfish.wasm">lichess-org/stockfish.wasm</a>, <a href="https://github.com/lichess-org/stockfish.js">lichess-org/stockfish.js</a> Slower fallback versions of Stockfish for browsers (C++, WebAssembly, JavaScript)</li>
+
+<li><a href="https://github.com/lichess-org/pgn-viewer">lichess-org/pgn-viewer</a> Embedded client-side PGN viewer (TypeScript)</li>
+
+<li><a href="https://github.com/lichess-org/leroyjenkins">lichess-org/leroyjenkins</a> DDoS mitigation (Rust)</li>
+
+</ul>
+
+<h2>External services</h2>
+
+<ul>
+
+<li><a href="https://github.com/lichess-org/lila-ws">lichess-org/lila-ws</a> WebSocket traffic (Scala)</li>
+
+<li><a href="https://github.com/lichess-org/lila-http">lichess-org/lila-http</a> (Rust)</li>
+
+<li><a href="https://github.com/lichess-org/lila-fishnet">lichess-org/lila-fishnet</a> Fishnet move requests (Scala)</li>
+
+<li><a href="https://github.com/lichess-org/lila-search">lichess-org/lila-search</a> Search engine (Scala)</li>
+
+<li><a href="https://github.com/lichess-org/lila-openingexplorer">lichess-org/lila-openingexplorer</a> (Rust)</li>
+
+<li><a href="https://github.com/lichess-org/lila-tablebase">lichess-org/lila-tablebase</a> Tablebase (Rust)</li>
+
+<li><a href="https://github.com/lichess-org/lila-push">lichess-org/lila-push</a> Web Push service (Rust)</li>
+
+<li><a href="https://github.com/lichess-org/fishnet">lichess-org/fishnet</a> Distributed computer analysis, using <a href="https://github.com/official-stockfish/Stockfish">official-stockfish/Stockfish</a> and <a href="https://github.com/ianfab/Fairy-Stockfish">ianfab/Fairy-Stockfish</a>, a Stockfish fork with chess variant support (Rust, C++)</li>
+
+<li><a href="https://github.com/lichess-org/lila-gif">lichess-org/lila-gif</a> GIF generator for games and positions (Rust)</li>
+
+<li><a href="https://github.com/lichess-org/lila-engine">lichess-org/lila-engine</a> Broker for communication between external engine providers and clients (Rust)</li>
+
+<li><a href="https://github.com/lichess-org/external-engine">lichess-org/external-engine</a> External chess engine provider for the analysis board (Python)</li>
+
+<li><a href="https://github.com/lichess-org/kaladin">lichess-org/kaladin</a> Machine Learning tool aimed at automating cheat detection using Insights</li>
+
+<li><a href="https://github.com/clarkerubber/irwin">clarkerubber/irwin</a>  AI that learns cheating patterns to help mods (Python)</li>
+
+<li><a href="https://github.com/lichess-org/lila-ip2proxy">lichess-org/lila-ip2proxy</a> Query database of known proxy IPs (Rust)</li>
+
+<li><a href="https://github.com/lichess-org/lila-pwned">lichess-org/lila-pwned</a> Query database of known leaked passwords (Rust)</li>
+
+<li><a href="https://github.com/cyanfish/bbpPairings">cyanfish/bbpPairings</a> Swiss pairings (C++)</li>
+
+<li><a href="https://github.com/ornicar/lichess-puzzler">ornicar/lichess-puzzler</a> Generate, review and classify chess puzzles (Python, TypeScript)</li>
+
+<li><a href="https://github.com/michael1241/discotron">michael1241/discotron</a> Discord integration for Patron status (Python)</li>
+
+</ul>
+
+<h2>Mobile app</h2>
+
+<ul>
+
+<li><a href="https://github.com/veloce/lichobile">veloce/lichobile</a> Main mobile  app</li>
+
+<li><a href="https://github.com/veloce/scalachessjs">veloce/scalachessjs</a> Rules of chess and its variants</li>
+
+<li><a href="https://github.com/veloce/capacitor-stockfish">veloce/capacitor-stockfish</a> Capacitor Stockfish plugin</li>
+
+<li><a href="https://github.com/veloce/cordova-plugin-stockfish">veloce/cordova-plugin-stockfish</a> Cordova interface Stockfish</li>
+
+</ul>
+
+<h2>Next iteration of the mobile app</h2>
+
+<ul>
+
+<li><a href="https://github.com/lichess-org/mobile">lichess-org/mobile</a> Next iteration of the mobile app, under development (Flutter, Dart)</li>
+
+<li><a href="https://github.com/lichess-org/flutter-chessground">lichess-org/flutter-chessground</a> Chessboard widget for flutter (Flutter, Dart)</li>
+
+<li><a href="https://github.com/lichess-org/dart-stockfish">lichess-org/dart-stockfish</a> Stockfish bindings for Dart (Dart, C++)</li>
+
+<li><a href="https://github.com/lichess-org/dartchess">lichess-org/dartchess</a> Chess and chess variant rules (Dart)</li>
+
+</ul>
+
+<h2>Docs, utilities, others</h2>
+
+<ul>
+
+<li><a href="https://github.com/lichess-org/api">lichess-org/api</a> HTTP API documentation (<a href="https://lichess.org/api">read here</a>)</li>
+
+<li><a href="https://github.com/lichess-org/api-ui">lichess-org/api/ui</a> Web frontend to some API endpoints (<a href="https://lichess.org/api/ui">try here</a>)</li>
+
+<li><a href="https://github.com/lichess-org/api-demo">lichess-org/api-demo</a> Demo of API oauth and gameplay (<a href="https://lichess-org.github.io/api-demo/">try here</a>)</li>
+
+<li><a href="https://github.com/ornicar/scalalib">ornicar/scalalib</a> Misc Scala utilities</li>
+
+<li><a href="https://github.com/lichess-org/playframework-lila">lichess-org/playframework-lila</a> Trimmed down Play Framework fork</li>
+
+<li><a href="https://github.com/ornicar/cash">ornicar/cash</a> Trimmed down cash.js fork</li>
+
+<li><a href="https://github.com/ornicar/lichess-db">ornicar/lichess-db</a> Generator for <a href="https://database.lichess.org">database.lichess.org</a> (download all rated games and puzzles)</li>
+
+<li><a href="https://github.com/ornicar/lila-db-seed">ornicar/lila-db-seed</a> Import dummy data into a local database for lila development</li>
+
+<li><a href="https://github.com/lichess-org/chess-openings">lichess-org/chess-openings</a> Aggregated data set of chess opening names</li>
+
+<li><a href="https://github.com/ShailChoksi/lichess-bot">ShailChoksi/lichess-bot</a> Bridge between HTTP API and chess engines</li>
+
+<li><a href="https://github.com/clarkerubber/Staunton-Pieces">clarkerubber/Staunton-Pieces</a> Original 3D rendered pieces, boards and trophies</li>
+
+<li><a href="https://github.com/arex1337/lichess-daily-puzzle-slack-app">arex1337/lichess-daily-puzzle-slack-app</a> Slack app that posts the daily puzzle to the Slack channel in which it is installed</li>
+
+<li><a href="https://github.com/arex1337/lichesspuzzle">arex1337/lichesspuzzle</a> Zulip bot that posts the daily puzzle to a specific Zulip stream</li>
+
+<li><a href="https://github.com/lichess-org/swiss-maker">lichess-org/swiss-maker</a> Script to generate swiss tournaments for your team using the <a href="https://lichess.org/api">Lichess API</a></li>
+
+<li><a href="https://github.com/thoas/picfit">thoas/picfit</a> HTTP image server (go)</li>
+
+</ul>
+
+<h2>Production architecture</h2>
+
+<p class="block-img"><img alt="" src="https://images.prismic.io/lichess/2025596e-3cf0-4dd2-8a06-533a9a118d47_architecture.dark.png?auto=compress,format" width="4943" height="3030" /></p></section><br /><section class="box"><h1 id="version" class="box__top">lila version</h1><table class="slist slist-pad"><tr><td>Server</td><td>2023-10-30T07:03:14+00:00</td><td><a href="https://github.com/lichess-org/lila/commits/a6ac2c4d91217f5fa2109ae4a17165c3d740b5f6"><pre>a6ac2c4d9121</pre></a></td><td>monitor login attempts from IP ranges that require 2FA</td></tr><tr><td>Assets</td><td id="asset-version-date"></td><td><a id="asset-version-commit"><pre></pre></a></td><td id="asset-version-message"></td></tr><tr><td>Boot</td><td colspan="3"><time class="timeago" datetime="2023-10-30T07:23:40.67958154Z">&nbsp;</time></td></tr></table></section><br /><section class="box"><div class="box__top"><h1>JavaScript modules</h1></div><p class="box__pad">Here are all frontend modules from <a href="https://github.com/lichess-org/lila/tree/master/ui">lichess-org/lila ui</a> in <a href="https://www.gnu.org/licenses/javascript-labels.en.html">Web Labels</a> compatible format:</p><table id="jslicense-labels1" class="slist slist-pad"><thead><tr><th>Script File</th><th>License</th><th>Source Code</th></tr></thead><tbody><tr><td><a href="https://lichess1.org/assets/_NLsvmn/compiled/analysisBoard.min.js">analysisBoard.min.js</a></td><td><a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPL-3.0+</a></td><td><a href="https://github.com/lichess-org/lila/tree/master/ui/analyse/src">ui/analyse/src</a></td></tr><tr><td><a href="https://lichess1.org/assets/_NLsvmn/compiled/challenge.min.js">challenge.min.js</a></td><td><a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPL-3.0+</a></td><td><a href="https://github.com/lichess-org/lila/tree/master/ui/challenge/src">ui/challenge/src</a></td></tr><tr><td><a href="https://lichess1.org/assets/_NLsvmn/compiled/chat.min.js">chat.min.js</a></td><td><a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPL-3.0+</a></td><td><a href="https://github.com/lichess-org/lila/tree/master/ui/chat/src">ui/chat/src</a></td></tr><tr><td><a href="https://lichess1.org/assets/_NLsvmn/compiled/cli.min.js">cli.min.js</a></td><td><a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPL-3.0+</a></td><td><a href="https://github.com/lichess-org/lila/tree/master/ui/cli/src">ui/cli/src</a></td></tr><tr><td><a href="https://lichess1.org/assets/_NLsvmn/compiled/dasher.min.js">dasher.min.js</a></td><td><a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPL-3.0+</a></td><td><a href="https://github.com/lichess-org/lila/tree/master/ui/dasher/src">ui/dasher/src</a></td></tr><tr><td><a href="https://lichess1.org/assets/_NLsvmn/compiled/editor.min.js">editor.min.js</a></td><td><a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPL-3.0+</a></td><td><a href="https://github.com/lichess-org/lila/tree/master/ui/editor/src">ui/editor/src</a></td></tr><tr><td><a href="https://lichess1.org/assets/_NLsvmn/compiled/insight.min.js">insight.min.js</a></td><td><a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPL-3.0+</a></td><td><a href="https://github.com/lichess-org/lila/tree/master/ui/insight/src">ui/insight/src</a></td></tr><tr><td><a href="https://lichess1.org/assets/_NLsvmn/compiled/learn.min.js">learn.min.js</a></td><td><a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPL-3.0+</a></td><td><a href="https://github.com/lichess-org/lila/tree/master/ui/learn/src">ui/learn/src</a></td></tr><tr><td><a href="https://lichess1.org/assets/_NLsvmn/compiled/lobby.min.js">lobby.min.js</a></td><td><a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPL-3.0+</a></td><td><a href="https://github.com/lichess-org/lila/tree/master/ui/lobby/src">ui/lobby/src</a></td></tr><tr><td><a href="https://lichess1.org/assets/_NLsvmn/compiled/notify.min.js">notify.min.js</a></td><td><a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPL-3.0+</a></td><td><a href="https://github.com/lichess-org/lila/tree/master/ui/notify/src">ui/notify/src</a></td></tr><tr><td><a href="https://lichess1.org/assets/_NLsvmn/compiled/palantir.min.js">palantir.min.js</a></td><td><a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPL-3.0+</a></td><td><a href="https://github.com/lichess-org/lila/tree/master/ui/palantir/src">ui/palantir/src</a></td></tr><tr><td><a href="https://lichess1.org/assets/_NLsvmn/compiled/puzzle.min.js">puzzle.min.js</a></td><td><a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPL-3.0+</a></td><td><a href="https://github.com/lichess-org/lila/tree/master/ui/puzzle/src">ui/puzzle/src</a></td></tr><tr><td><a href="https://lichess1.org/assets/_NLsvmn/compiled/round.min.js">round.min.js</a></td><td><a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPL-3.0+</a></td><td><a href="https://github.com/lichess-org/lila/tree/master/ui/round/src">ui/round/src</a></td></tr><tr><td><a href="https://lichess1.org/assets/_NLsvmn/compiled/serviceWorker.min.js">serviceWorker.min.js</a></td><td><a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPL-3.0+</a></td><td><a href="https://github.com/lichess-org/lila/tree/master/ui/serviceWorker/src">ui/serviceWorker/src</a></td></tr><tr><td><a href="https://lichess1.org/assets/_NLsvmn/compiled/simul.min.js">simul.min.js</a></td><td><a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPL-3.0+</a></td><td><a href="https://github.com/lichess-org/lila/tree/master/ui/simul/src">ui/simul/src</a></td></tr><tr><td><a href="https://lichess1.org/assets/_NLsvmn/compiled/site.min.js">site.min.js</a></td><td><a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPL-3.0+</a></td><td><a href="https://github.com/lichess-org/lila/tree/master/ui/site/src">ui/site/src</a></td></tr><tr><td><a href="https://lichess1.org/assets/_NLsvmn/compiled/speech.min.js">speech.min.js</a></td><td><a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPL-3.0+</a></td><td><a href="https://github.com/lichess-org/lila/tree/master/ui/speech/src">ui/speech/src</a></td></tr><tr><td><a href="https://lichess1.org/assets/_NLsvmn/compiled/tournament.calendar.min.js">tournament.calendar.min.js</a></td><td><a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPL-3.0+</a></td><td><a href="https://github.com/lichess-org/lila/tree/master/ui/tournament.calendar/src">ui/tournament.calendar/src</a></td></tr><tr><td><a href="https://lichess1.org/assets/_NLsvmn/compiled/tournament.min.js">tournament.min.js</a></td><td><a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPL-3.0+</a></td><td><a href="https://github.com/lichess-org/lila/tree/master/ui/tournament/src">ui/tournament/src</a></td></tr><tr><td><a href="https://lichess1.org/assets/_NLsvmn/compiled/tournament.schedule.min.js">tournament.schedule.min.js</a></td><td><a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPL-3.0+</a></td><td><a href="https://github.com/lichess-org/lila/tree/master/ui/tournament.schedule/src">ui/tournament.schedule/src</a></td></tr><tr><td><a href="https://lichess1.org/assets/_NLsvmn/compiled/swiss.min.js">swiss.min.js</a></td><td><a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPL-3.0+</a></td><td><a href="https://github.com/lichess-org/lila/tree/master/ui/swiss/src">ui/swiss/src</a></td></tr></tbody></table></section></div></main></div><a id="reconnecting" class="link text" data-icon="">Reconnecting</a><svg width="0" height="0"><mask id="mask"><path fill="#fff" stroke="#fff" stroke-linejoin="round" d="M38.956.5c-3.53.418-6.452.902-9.286 2.984C5.534 1.786-.692 18.533.68 29.364 3.493 50.214 31.918 55.785 41.329 41.7c-7.444 7.696-19.276 8.752-28.323 3.084C3.959 39.116-.506 27.392 4.683 17.567 9.873 7.742 18.996 4.535 29.03 6.405c2.43-1.418 5.225-3.22 7.655-3.187l-1.694 4.86 12.752 21.37c-.439 5.654-5.459 6.112-5.459 6.112-.574-1.47-1.634-2.942-4.842-6.036-3.207-3.094-17.465-10.177-15.788-16.207-2.001 6.967 10.311 14.152 14.04 17.663 3.73 3.51 5.426 6.04 5.795 6.756 0 0 9.392-2.504 7.838-8.927L37.4 7.171z"/></mask></svg><script nonce="0K5rR5rlLAdjbHTjUZ7aEnbj">lichess={load:new Promise(r=>document.addEventListener("DOMContentLoaded",r)),quantity:o=>1==o?"one":"other",siteI18n:{"pause":"Pause","resume":"Resume","nbFriendsOnline:one":"%s friend online","nbFriendsOnline":"%s friends online","justNow":"just now","inNbSeconds:one":"in %s second","inNbSeconds":"in %s seconds","inNbMinutes:one":"in %s minute","inNbMinutes":"in %s minutes","inNbHours:one":"in %s hour","inNbHours":"in %s hours","inNbDays:one":"in %s day","inNbDays":"in %s days","inNbWeeks:one":"in %s week","inNbWeeks":"in %s weeks","inNbMonths:one":"in %s month","inNbMonths":"in %s months","inNbYears:one":"in %s year","inNbYears":"in %s years","rightNow":"right now","nbSecondsAgo:one":"%s second ago","nbSecondsAgo":"%s seconds ago","nbMinutesAgo:one":"%s minute ago","nbMinutesAgo":"%s minutes ago","nbHoursAgo:one":"%s hour ago","nbHoursAgo":"%s hours ago","nbDaysAgo:one":"%s day ago","nbDaysAgo":"%s days ago","nbWeeksAgo:one":"%s week ago","nbWeeksAgo":"%s weeks ago","nbMonthsAgo:one":"%s month ago","nbMonthsAgo":"%s months ago","nbYearsAgo:one":"%s year ago","nbYearsAgo":"%s years ago"}}</script><script defer="defer" src="https://lichess1.org/assets/_NLsvmn/javascripts/vendor/cash.min.js"></script><script type="module" src="https://lichess1.org/assets/_NLsvmn/compiled/lichess.min.js"></script><script nonce="0K5rR5rlLAdjbHTjUZ7aEnbj">lichess.load.then(()=>{$('#asset-version-date').text(lichess.info.date);
+$('#asset-version-commit').attr('href', 'https://github.com/lichess-org/lila/commits/' + lichess.info.commit).find('pre').text(lichess.info.commit.substr(0, 12));
+$('#asset-version-message').text(lichess.info.message);})</script></body></html>
