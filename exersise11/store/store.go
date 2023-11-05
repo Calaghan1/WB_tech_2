@@ -3,12 +3,24 @@ package store
 import (
 	"calandary/helpers"
 	"encoding/json"
+	"os"
 	"time"
 )
 
+
+func CreateNewStore() *Store {
+	ev := make(map[time.Time][]Event)
+	return &Store{
+		Events: ev,
+		Cap: 0,
+	}
+}
+
 type Store struct {
 	Events map[time.Time][]Event `json:"data"`
+	Cap int
 }
+
 type Event struct {
 	ID     int       `json:"id"`
 	UserID int       `json:"user_id"`
@@ -22,7 +34,43 @@ func (s *Store) CreateNew(data []byte) bool {
 	if !helpers.CheckErorr(err) {
 		return false
 	}
+	s.Cap += 1
+	New_event.ID = s.Cap
 	s.Events[New_event.Date] = append(s.Events[New_event.Date], New_event)
+	return true
+}
+
+func (s *Store)SaveData() bool {
+	data, err := json.MarshalIndent(s, " ")
+	if !helpers.CheckError(err) {
+		return false
+	}
+	file, err := os.Create("data.json")
+	if !helpers.CheckErorr(err) {
+		return false
+	}
+	_, err = file.Write(data)
+	if !helpers.CheckErorr(err) {
+		return false
+	}
+	file.Close()
+	return true
+}
+
+func (s *Store)LoadData() bool {
+	file, err := os.Open("data.json")
+	if !helpers.CheckErorr(err) {
+		return false
+	}
+	var data []byte
+	_, err = file.Read(data)
+	if !helpers.CheckErorr(err) {
+		return false
+	}
+	err = json.Unmarshal(data, s)
+	if !helpers.CheckErorr(err) {
+		return false
+	}	
 	return true
 }
 

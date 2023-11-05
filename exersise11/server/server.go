@@ -1,10 +1,11 @@
 package server
 
 import (
+	"calandary/store"
+	"fmt"
 	"log"
 	"net/http"
 	"time"
-	"fmt"
 )
 
 type Server struct {
@@ -36,9 +37,10 @@ func LoggerMiddleware(next http.Handler) http.Handler {
 }
 
 func (s *Server) Start() error{
+	db := store.CreateNewStore()
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", s.helloHandler)
-
+	mux.HandleFunc("/create_event", db.CreateNew())
 	// Используем LoggerMiddleware для логирования запросов.
 	loggedMux := LoggerMiddleware(mux)
 
