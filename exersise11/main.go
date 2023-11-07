@@ -25,33 +25,16 @@
 package main
 
 import (
-	"encoding/json"
-	"log"
-	"net/http"
-	"time"
 	"calandary/server"
-	"calandary/helpers"
+	"calandary/store"
 )
 
 
 
 
 
-
-
-
-
-
-func GetEventDay(w http.ResponseWriter, req *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	
-	js, err := json.Marshal(ev)
-	helpers.CheckError(err)
-	w.Write(js)
-}
-
-
 func main() {
-	var s server.Server
+	store := store.CreateNewStore()
+	s := server.IntServer(store)
 	s.Start()
 }

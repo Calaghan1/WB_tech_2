@@ -11,3 +11,5 @@ func CheckError(err error) bool {
 		return true
 	}
 }
+
+
